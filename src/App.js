@@ -30,7 +30,7 @@ function App() {
 
      Axios.put('https://git.heroku.com/mymernbeginnerapp.git/update', {newAge : newAge, id : id}).then(()=>{
        setListOfFriends(listOfFriends.map((val)=>{
-         return val._id == id ? {_id :id, name: val.name, age: newAge}
+         return val._id === id ? {_id :id, name: val.name, age: newAge}
           :val;
        }))
      })
@@ -39,7 +39,7 @@ function App() {
  const deleteFriend = (id)=>{
     Axios.delete(`https://git.heroku.com/mymernbeginnerapp.git/delete/${id}`).then(()=>{
       setListOfFriends(listOfFriends.filter((val)=>{
-        return val._id != id;
+        return val._id !== id;
       }))
     })
  }
