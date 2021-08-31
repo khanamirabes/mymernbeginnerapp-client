@@ -12,7 +12,7 @@ function App() {
 
 
  const addFriend = ()=>{ //when we add data to database, we use post request
-   Axios.post('https://git.heroku.com/mymernbeginnerapp.git/addfriend', {
+   Axios.post('https://mymernbeginnerapp.herokuapp.com//addfriend', {
       name: name,
        age: age,
       })
@@ -28,7 +28,7 @@ function App() {
  const updateFriend = (id)=>{
      const newAge = prompt("Enter your Age")
 
-     Axios.put('https://git.heroku.com/mymernbeginnerapp.git/update', {newAge : newAge, id : id}).then(()=>{
+     Axios.put('https://mymernbeginnerapp.herokuapp.com//update', {newAge : newAge, id : id}).then(()=>{
        setListOfFriends(listOfFriends.map((val)=>{
          return val._id === id ? {_id :id, name: val.name, age: newAge}
           :val;
@@ -37,7 +37,7 @@ function App() {
  }
 
  const deleteFriend = (id)=>{
-    Axios.delete(`https://git.heroku.com/mymernbeginnerapp.git/delete/${id}`).then(()=>{
+    Axios.delete(`https://mymernbeginnerapp.herokuapp.com//delete/${id}`).then(()=>{
       setListOfFriends(listOfFriends.filter((val)=>{
         return val._id !== id;
       }))
@@ -45,7 +45,7 @@ function App() {
  }
 
  useEffect(() => {
-  Axios.get('https://git.heroku.com/mymernbeginnerapp.git/read')
+  Axios.get('https://mymernbeginnerapp.herokuapp.com//read')
     .then((response)=>{
       setListOfFriends(response.data);
     })
